@@ -1,3 +1,11 @@
 Weather Webapp created by Mark Barbera for chatham financial coding project
 
-Apis included are Forecast.io Weatherbug WeatherUndergroun d
+Apis included are 
+
+Weather forecasts:
+Forecast.io 
+
+WeatherUnderground
+
+Latitude Longitude:
+google maps javascript api
