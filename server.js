@@ -18,8 +18,16 @@ var myServer = http.createServer(aRouter);
 aRouter.use(serveStatic('public', {'index':['index.html']}))
 
 aRouter.get('/location/:location', function(req,res){
+    getLocation(req.params.location, function(result){
+        console.log(result);
+        res.send(result);
+    });
+
+})
+
+function getLocation(location, callback){
     var url = "http://maps.googleapis.com/maps/api/geocode/json";
-    var query = {address: req.params.location};
+    var query = {address: location};
 
     console.log(query);
     request({url:url,qs:query}, function(err, response, data)
@@ -27,11 +35,11 @@ aRouter.get('/location/:location', function(req,res){
         if(err){
             return console.error("Call failed, ", err);
         }
-        res.send(data);
+        callback(data);
           
     });
+}
 
-})
 
 
 
