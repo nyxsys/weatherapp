@@ -1,6 +1,12 @@
 
 
-
+function push(){
+    console.log("submitting")
+    var location = $(".location").val();
+    console.log(location);
+    
+    $(".location").val(""); 
+}
 
 
 function test(){

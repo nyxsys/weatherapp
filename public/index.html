@@ -1,13 +1,18 @@
 <head>
-    <title>weatherwebapp</title>
+    <title>what's the weather?</title>
     <script src = "https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <script src = "script.js"></script>
     <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
-    
-    <p> hallo everyone</p>
+    <h1>Weather</h1>
+    <div>
+    <span>enter a location</span>
+    <form onsubmit="push(); return false;">
     <input class="location"></input>
-    <button onclick="test()">button</button>
+    <input type="submit" value="send"></input>
+    </form>
+    </div>
+    
 </body>

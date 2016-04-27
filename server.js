@@ -23,7 +23,7 @@ aRouter.use(serveStatic('public', {'index':['index.html']}))
 
 aRouter.get('/location/:location', function(req,res){
     getLocation(req.params.location, function(result){
-        console.log(result);
+        //console.log(result);
         res.send(result);
     });
 
@@ -70,7 +70,7 @@ function requestWeather(site, callback){
     console.log(site.url);
     request.get(site.url, function(err,res, data){
         if(err){
-            return("Call was unable to be made");
+            return console.err("Call was unable to be made", err);
         }
         data = JSON.parse(data);
         
@@ -78,7 +78,7 @@ function requestWeather(site, callback){
         {
             service: site.name,
             today: site.cur(data),
-            tenDay: site.week(data)
+            week: site.week(data)
         };
         callback(weather);
 
@@ -220,4 +220,3 @@ function getPercent(percentString){
 
 
 myServer.listen(process.env.PORT, process.env.IP);
-//getLocation("China");

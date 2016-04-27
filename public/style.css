@@ -1,9 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+
+body{
+    font-family: Poppins;
+}
 
 input{
+    font-family: Poppins;
     background-color:white;
     color:black;
 }
-button{
-    background-color:white;
-    color:black;
-}
+
