@@ -69,6 +69,9 @@ function getTime(unixTime){
 function requestWeather(site, callback){
     console.log(site.url);
     request.get(site.url, function(err,res, data){
+        if(err){
+            return("Call was unable to be made");
+        }
         data = JSON.parse(data);
         
         var weather = 
@@ -76,7 +79,7 @@ function requestWeather(site, callback){
             service: site.name,
             today: site.cur(data),
             tenDay: site.week(data)
-        }
+        };
         callback(weather);
 
     });
@@ -87,12 +90,13 @@ function requestWeather(site, callback){
 function weatherSummary(coord, callback){
     var foreURL = util.format("https://api.forecast.io/forecast/%s/%s,%s",  process.env.FORECASTIO_KEY, coord.lat, coord.lng);
     //var natURL = util.format("http://forecast.weather.gov/MapClick.php?lat=%s&lon=%s&FcstType=json", coord.lat, coord.lng);
-    var wuURL = util.format("http://api.wunderground.com/api/%s/forecast10day/q/%s.json", process.env.WUNDERGROUND_KEY, coord.address);
+    var wuURL = util.format("http://api.wunderground.com/api/%s/features/conditions/forecast10day/q/%s,%s.json", process.env.WUNDERGROUND_KEY, coord.lat, coord.lng);
+
 
     
     var sites = [
         {name:"forecast.io", url:foreURL, cur: getFCCurrent, week: getFCWeek},
-        //{name:"national weather service",url:natURL, cur: getNatCurrent, week: getNatWeek},
+        //{name:"national weather service",url:natURL, cur: getNatCurrent, week: getNatWeek},// leaving this one out until I figure out why its denying me access
         {name:"weather underground",url:wuURL, cur: getWUCurrent, week: getWUWeek}
     ];
     
@@ -118,30 +122,100 @@ The follow process their various api returns to format their respective data to 
 */
 function getFCCurrent(data){
     
-    return ("1");
+    var current = { 
+        time : getTime(data.currently.time),
+        temperature : data.currently.temperature,
+        humidity : data.currently.humidity,
+        wind : data.currently.windSpeed,
+        rainchance : data.currently.precipProbability
+    }
+    
+    
+    
+    
+    return (current);
 }
 
 function getFCWeek(data){
-     return ("2");
+    var weekData = data.daily.data;
+    
+    var week = []
+    
+    for(var i = 1; i < weekData.length; i++){ //starts at 1 as 0 is today
+        week.push(
+            {
+              time : getTime(weekData[i].time),
+              temperatureMin : weekData[i].temperatureMin,
+              temperatureMax : weekData[i].temperatureMax,
+              humidity : weekData[i].humidity,
+              wind : weekData[i].windSpeed,
+              rainchance : weekData[i].precipProbability
+            }
+            
+            );
+    }
+    
+    
+     return (week);
 }
 
 function getWUCurrent(data){
-     return ("3");
+    
+    var current = { 
+        time : getTime(parseInt(data.current_observation.observation_epoch)),
+        temperature : data.current_observation.temp_f,
+        humidity : getPercent(data.current_observation.relative_humidity),
+        wind : data.current_observation.wind_mph
+    }
+     return (current);
 }
 
 function getWUWeek(data){
-     return ("4");
+    var weekData = data.forecast.simpleforecast.forecastday;
+    
+    var week = []
+    
+    for(var i = 1; i < weekData.length; i++){ //starts at 1 as 0 is today
+        week.push(
+            {
+              time : getTime(weekData[i].date.epoch),
+              temperatureMin : weekData[i].low.fahrenheit,
+              temperatureMax : weekData[i].high.fahrenheit,
+              humidity : weekData[i].avehumdity/100,
+              wind : weekData[i].avewind.mph,
+              rainchance : weekData[i].precipProbability
+            }
+            
+            );
+    }
+    
+     return (week);
 }
 
+/*
 function getNatCurrent(data){
+    current = { 
+        time : getTime(data.currently.time),
+        temperature : data.currently.temperature,
+        humidity : data.currently.humidity,
+        wind : data.currently.windSpeed,
+        rainchance : data.currently.precipProbability
+    }
      return ("5");
 }
 
 function getNatWeek(data){
      return ("6");
 }
+*/
 
 
+
+//helper functions
+
+function getPercent(percentString){
+    return parseFloat(percentString.slice(0,-1))/100;
+}
 
 
 
