@@ -145,8 +145,8 @@ function getFCWeek(data){
         week.push(
             {
               time : getTime(weekData[i].time),
-              temperatureMin : weekData[i].temperatureMin,
-              temperatureMax : weekData[i].temperatureMax,
+              temphi : weekData[i].temperatureMin,
+              templo : weekData[i].temperatureMax,
               humidity : weekData[i].humidity,
               wind : weekData[i].windSpeed,
               rainchance : weekData[i].precipProbability
@@ -179,8 +179,8 @@ function getWUWeek(data){
         week.push(
             {
               time : getTime(weekData[i].date.epoch),
-              temperatureMin : weekData[i].low.fahrenheit,
-              temperatureMax : weekData[i].high.fahrenheit,
+              temphi : parseInt(weekData[i].low.fahrenheit),
+              templo : parseInt(weekData[i].high.fahrenheit),
               humidity : weekData[i].avehumdity/100,
               wind : weekData[i].avewind.mph,
               rainchance : weekData[i].precipProbability

@@ -2,7 +2,10 @@
 
 body{
     font-family: Poppins;
+
 }
+
+
 
 input{
     font-family: Poppins;
@@ -10,3 +13,21 @@ input{
     color:black;
 }
 
+
+.title, .entry, .locale{
+    margin-left:50px;
+    
+}
+
+.week{
+    display:flex;
+    flex-flow:row;
+    margin-left:50px;
+}
+.today{
+    margin:50px;
+}
+.day{
+    margin-bottom: 10px;
+    margin-right:30px;
+}

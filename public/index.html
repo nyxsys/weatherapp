@@ -1,6 +1,7 @@
 <head>
     <title>what's the weather?</title>
     <script src = "https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src = "math.js"></script>
     <script src = "script.js"></script>
     <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -8,14 +9,14 @@
 <body>
     <h1>Weather</h1>
     
-    <div>
+    <div class="entry">
     <span>enter a location</span>
     <form onsubmit="push(); return false;">
     <input class="location"></input>
     <input type="submit" value="send"></input>
     </form>
     </div>
-    
+    <p class='locale'></p>
     <div class="today">
         <!--
         <p class = "date"></p>
@@ -25,7 +26,8 @@
         <p class = "rainchance"></p>
         -->
     </div>
-    
+
+    <h3 class="title"></h3>
     <div class = "week">
         <!--
         <div class = "day">
@@ -38,6 +40,6 @@
         </div>
         -->
     </div>
-    
+
     
 </body>
