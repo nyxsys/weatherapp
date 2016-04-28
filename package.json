@@ -1,0 +1,19 @@
+{
+  "name": "weatherapp",
+  "version": "0.0.1",
+  "description": "Chatham Finanical weather app",
+  "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine-node spec"
+  },
+  "author": "Mark Barbera",
+  "dependencies": {
+    "express": "^4.13.4",
+    "jasmine-node": "^1.14.5",
+    "request": "^2.72.0",
+    "serve-static": "^1.10.2"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1"
+  }
+}

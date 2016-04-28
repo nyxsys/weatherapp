@@ -24,8 +24,6 @@ function push(){
 
 function weatherReport(data){
     
-    
-    
     var today = 
     {
         time:0,
