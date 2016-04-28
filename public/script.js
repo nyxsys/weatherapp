@@ -112,8 +112,8 @@ function weatherReport(data){
 */
 
 function appendToday(today){
-    $(".today").append("<h3> today's weather </h3>");
-    $(".today").append("<b>date " + today.time.month + "/" + today.time.day + "</b>");
+    $(".today").append("<h3> current weather </h3>");
+    //$(".today").append("<b>date " + today.time.month + "/" + today.time.day + "</b>");
     $(".today").append("<p>temp " + Math.round10(today.temperature, -2) + "</p>");
     $(".today").append("<p>wind " + Math.round10(today.wind, -2) + "</p>");
     $(".today").append("<p>humidity " + Math.round10(today.humidity, -2) + "</p>");
