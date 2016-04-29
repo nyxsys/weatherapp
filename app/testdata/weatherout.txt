@@ -1,0 +1,102 @@
+ Not guarunteed but likely results of weather.json processing
+ 
+current weather
+
+temp 44.3
+
+wind 2.71
+
+humidity 0.92
+
+rainchance 0
+seven day forecast
+
+date 4/30
+
+High temp 59.91
+
+Low temp 45.57
+
+wind 7.23
+
+humidity 0.65
+
+rainchance 0.26
+
+
+date 5/1
+
+High temp 59.79
+
+Low temp 49.05
+
+wind 8.28
+
+humidity 0.7
+
+rainchance 0.47
+
+
+date 5/2
+
+High temp 61.44
+
+Low temp 49.21
+
+wind 7.25
+
+humidity 0.8
+
+rainchance 0.78
+
+
+date 5/3
+
+High temp 64.89
+
+Low temp 46.16
+
+wind 6.69
+
+humidity 0.67
+
+rainchance 0.22
+
+
+date 5/4
+
+High temp 67.59
+
+Low temp 49.5
+
+wind 7.15
+
+humidity 0.58
+
+rainchance 0.13
+
+
+date 5/5
+
+High temp 71.6
+
+Low temp 53.79
+
+wind 7.64
+
+humidity 0.63
+
+rainchance 0.3
+
+
+date 5/6
+
+High temp 69.87
+
+Low temp 53.05
+
+wind 6.79
+
+humidity 0.64
+
+rainchance 0.38
