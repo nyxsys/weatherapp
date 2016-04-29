@@ -13,8 +13,8 @@ var util = require("util");
 console.log("Started server");
 
 
-console.log("WU key", process.env.WUNDERGROUND_KEY);
-console.log("Forecast key", process.env.FORECASTIO_KEY);
+//console.log("WU key", process.env.WUNDERGROUND_KEY);
+//console.log("Forecast key", process.env.FORECASTIO_KEY);
 
 var aRouter = express();
 var myServer = http.createServer(aRouter);
@@ -23,7 +23,7 @@ aRouter.use(serveStatic('public', {'index':['index.html']}))
 
 aRouter.get('/location/:location', function(req,res){
     getLocation(req.params.location, function(result){
-        //console.log(result);
+        //console.log("result:", result);
         res.send(result);
     });
 
@@ -39,7 +39,9 @@ var getLocation = function (location, callback){
         data = JSON.parse(data);
         
         if(data.status != "OK"){
-            return console.error("Call failed, location likely nonexistent", err);
+            
+            callback({error:"Call failed, location likely nonexistent"});
+            return console.error("Call failed, location " + location + " likely nonexistent", err);
         }
         
         var coord = {
@@ -124,7 +126,7 @@ var getFCCurrent = function (data){
     if(data.currently){
     
         var current = { 
-            time : getTime(data.currently.time),
+            time : getTime(data.currently.time + (data.offset* 3600)),
             temperature : data.currently.temperature,
             humidity : data.currently.humidity,
             wind : data.currently.windSpeed,
@@ -149,8 +151,8 @@ var getFCWeek = function (data){
             week.push(
                 {
                   time : getTime(weekData[i].time),
-                  temphi : weekData[i].temperatureMin,
-                  templo : weekData[i].temperatureMax,
+                  temphi : weekData[i].temperatureMax,
+                  templo : weekData[i].temperatureMin,
                   humidity : weekData[i].humidity,
                   wind : weekData[i].windSpeed,
                   rainchance : weekData[i].precipProbability
@@ -171,10 +173,10 @@ var getFCWeek = function (data){
 var getWUCurrent = function (data){
     if(data.current_observation){
     var current = { 
-        time : getTime(parseInt(data.current_observation.observation_epoch)),
+        time : getTime(parseInt(data.current_observation.local_epoch) + parseInt(data.current_observation.local_tz_offset)*36),
         temperature : data.current_observation.temp_f,
         humidity : getPercent(data.current_observation.relative_humidity),
-        wind : data.current_observation.wind_mph
+        wind : data.current_observation.wind_mph,
     }
     return (current);
     }
@@ -193,11 +195,11 @@ var getWUWeek = function (data){
         week.push(
             {
               time : getTime(weekData[i].date.epoch),
-              temphi : parseInt(weekData[i].low.fahrenheit),
-              templo : parseInt(weekData[i].high.fahrenheit),
-              humidity : weekData[i].avehumdity/100,
+              temphi : parseInt(weekData[i].high.fahrenheit),
+              templo : parseInt(weekData[i].low.fahrenheit),
+              humidity : weekData[i].avehumidity/100,
               wind : weekData[i].avewind.mph,
-              rainchance : weekData[i].precipProbability
+              rainchance : weekData[i].pop/100
             }
             
             );

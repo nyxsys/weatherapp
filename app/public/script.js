@@ -115,7 +115,7 @@ function appendToday(today){
     $(".today").append("<p>temp " + Math.round10(today.temperature, -2) + "</p>");
     $(".today").append("<p>wind " + Math.round10(today.wind, -2) + "</p>");
     $(".today").append("<p>humidity " + Math.round10(today.humidity, -2) + "</p>");
-    $(".today").append("<p>rainchance " + today.rainchance + "</p>");
+    $(".today").append("<p>rainchance " + Math.round10(today.rainchance, -2) + "</p>");
 }
 
 /*
@@ -140,7 +140,7 @@ function appendWeek(week){
         day.append("<p>Low temp " + Math.round10(week[i].templo, -2) + "</p>");
         day.append("<p>wind " + Math.round10(week[i].wind, -2) + "</p>");
         day.append("<p>humidity " + Math.round10(week[i].humidity, -2) + "</p>");
-        day.append("<p>rainchance " + week[i].rainchance + "</p>");
+        day.append("<p>rainchance " + Math.round10(week[i].rainchance, -2) + "</p>");
         day.append("<br>");
         
         
