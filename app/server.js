@@ -29,7 +29,7 @@ aRouter.get('/location/:location', function(req,res){
 
 })
 
-function getLocation(location, callback){
+var getLocation = function (location, callback){
     var url = "http://maps.googleapis.com/maps/api/geocode/json";
     var query = {address: location};
 
@@ -60,17 +60,17 @@ function getLocation(location, callback){
     });
 }
 
-function getTime(unixTime){
+var  getTime = function(unixTime){
     var date = new Date(unixTime*1000);
     return {weekday: date.getDay(), day:date.getDate(), month:date.getMonth()+1}
 }
 
 
-function requestWeather(site, callback){
+var requestWeather = function (site, callback){
     console.log(site.url);
     request.get(site.url, function(err,res, data){
         if(err){
-            return console.err("Call was unable to be made", err);
+            return console.err("Call was unable to be made", err); //Hopefully this will catch any overflow calls, but I'm not positive on it.
         }
         data = JSON.parse(data);
         
@@ -87,7 +87,7 @@ function requestWeather(site, callback){
 
 
 
-function weatherSummary(coord, callback){
+var  weatherSummary = function(coord, callback){
     var foreURL = util.format("https://api.forecast.io/forecast/%s/%s,%s",  process.env.FORECASTIO_KEY, coord.lat, coord.lng);
     //var natURL = util.format("http://forecast.weather.gov/MapClick.php?lat=%s&lon=%s&FcstType=json", coord.lat, coord.lng);
     var wuURL = util.format("http://api.wunderground.com/api/%s/features/conditions/forecast10day/q/%s,%s.json", process.env.WUNDERGROUND_KEY, coord.lat, coord.lng);
@@ -120,57 +120,71 @@ function weatherSummary(coord, callback){
 /*
 The follow process their various api returns to format their respective data to something more uniform.
 */
-function getFCCurrent(data){
+var getFCCurrent = function (data){
+    if(data.currently){
     
-    var current = { 
-        time : getTime(data.currently.time),
-        temperature : data.currently.temperature,
-        humidity : data.currently.humidity,
-        wind : data.currently.windSpeed,
-        rainchance : data.currently.precipProbability
+        var current = { 
+            time : getTime(data.currently.time),
+            temperature : data.currently.temperature,
+            humidity : data.currently.humidity,
+            wind : data.currently.windSpeed,
+            rainchance : data.currently.precipProbability
+        }
+        
+        return (current);
+    
     }
-    
-    
-    
-    
-    return (current);
+    else{
+        return({error:"Malformed dataset"})
+    }
 }
 
-function getFCWeek(data){
-    var weekData = data.daily.data;
-    
-    var week = []
-    
-    for(var i = 1; i < weekData.length; i++){ //starts at 1 as 0 is today
-        week.push(
-            {
-              time : getTime(weekData[i].time),
-              temphi : weekData[i].temperatureMin,
-              templo : weekData[i].temperatureMax,
-              humidity : weekData[i].humidity,
-              wind : weekData[i].windSpeed,
-              rainchance : weekData[i].precipProbability
-            }
-            
-            );
+var getFCWeek = function (data){
+    if(data.daily.data){
+        var weekData = data.daily.data;
+        
+        var week = []
+        
+        for(var i = 1; i < weekData.length; i++){ //starts at 1 as 0 is today
+            week.push(
+                {
+                  time : getTime(weekData[i].time),
+                  temphi : weekData[i].temperatureMin,
+                  templo : weekData[i].temperatureMax,
+                  humidity : weekData[i].humidity,
+                  wind : weekData[i].windSpeed,
+                  rainchance : weekData[i].precipProbability
+                }
+                
+                );
+        }
+        
+        
+         return (week);
+    }
+    else{
+        return({error:"Malformed dataset"})
     }
     
-    
-     return (week);
 }
 
-function getWUCurrent(data){
-    
+var getWUCurrent = function (data){
+    if(data.current_observation){
     var current = { 
         time : getTime(parseInt(data.current_observation.observation_epoch)),
         temperature : data.current_observation.temp_f,
         humidity : getPercent(data.current_observation.relative_humidity),
         wind : data.current_observation.wind_mph
     }
-     return (current);
+    return (current);
+    }
+    else{
+        return({error:"Malformed dataset"})
+    }
 }
 
-function getWUWeek(data){
+var getWUWeek = function (data){
+    if(data.forecast.simpleforecast.forecastday){
     var weekData = data.forecast.simpleforecast.forecastday;
     
     var week = []
@@ -190,6 +204,12 @@ function getWUWeek(data){
     }
     
      return (week);
+    }
+    else{
+        return({error:"Malformed dataset"})
+    }
+    
+
 }
 
 /*
@@ -213,9 +233,20 @@ function getNatWeek(data){
 
 //helper functions
 
-function getPercent(percentString){
+var getPercent = function (percentString){
     return parseFloat(percentString.slice(0,-1))/100;
 }
+
+//export functions for unit testing
+exports.getLocation = getLocation;
+exports.getTime = getTime;
+exports.requestWeather = requestWeather;
+exports.weatherSummary = weatherSummary;
+exports.getFCWeek = getFCWeek;
+exports.getFCCurrent = getFCCurrent;
+exports.getWUWeek = getWUWeek;
+exports.getWUCurrent = getWUCurrent;
+exports.getPercent = getPercent;
 
 
 
