@@ -67,7 +67,7 @@ var  getTime = function(unixTime){
 
 
 var requestWeather = function (site, callback){
-    console.log(site.url);
+    //console.log(site.url);
     request.get(site.url, function(err,res, data){
         if(err){
             return console.err("Call was unable to be made", err); //Hopefully this will catch any overflow calls, but I'm not positive on it.
@@ -102,7 +102,7 @@ var  weatherSummary = function(coord, callback){
     
     var weather = [];
     for(var i = 0; i< sites.length; i++){
-        console.log(sites[i]);
+        //console.log(sites[i]);
         requestWeather(sites[i], function(data){
             weather.push({summary:data});
             
@@ -140,7 +140,7 @@ var getFCCurrent = function (data){
 }
 
 var getFCWeek = function (data){
-    if(data.daily.data){
+    if(data.daily && data.daily.data){
         var weekData = data.daily.data;
         
         var week = []
@@ -184,7 +184,7 @@ var getWUCurrent = function (data){
 }
 
 var getWUWeek = function (data){
-    if(data.forecast.simpleforecast.forecastday){
+    if(data.forecast && data.forecast.simpleforecast.forecastday){
     var weekData = data.forecast.simpleforecast.forecastday;
     
     var week = []
