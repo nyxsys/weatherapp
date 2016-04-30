@@ -10,27 +10,15 @@
                 "service": "weather underground",
                 "today": {
                     "time": {
-                        "weekday": 4,
-                        "day": 28,
+                        "weekday": 5,
+                        "day": 29,
                         "month": 4
                     },
-                    "temperature": 44.7,
-                    "humidity": 0.91,
-                    "wind": 3
+                    "temperature": 48.9,
+                    "humidity": 0.76,
+                    "wind": 1
                 },
                 "week": [
-                    {
-                        "time": {
-                            "weekday": 5,
-                            "day": 29,
-                            "month": 4
-                        },
-                        "temphi": 56,
-                        "templo": 45,
-                        "humidity": 0.59,
-                        "wind": 9,
-                        "rainchance": 0.3
-                    },
                     {
                         "time": {
                             "weekday": 6,
@@ -38,10 +26,10 @@
                             "month": 4
                         },
                         "temphi": 63,
-                        "templo": 49,
-                        "humidity": 0.52,
-                        "wind": 8,
-                        "rainchance": 0.2
+                        "templo": 48,
+                        "humidity": 0.53,
+                        "wind": 7,
+                        "rainchance": 0
                     },
                     {
                         "time": {
@@ -49,11 +37,11 @@
                             "day": 1,
                             "month": 5
                         },
-                        "temphi": 60,
-                        "templo": 50,
-                        "humidity": 0.7,
-                        "wind": 9,
-                        "rainchance": 0.9
+                        "temphi": 61,
+                        "templo": 52,
+                        "humidity": 0.72,
+                        "wind": 8,
+                        "rainchance": 1
                     },
                     {
                         "time": {
@@ -61,11 +49,11 @@
                             "day": 2,
                             "month": 5
                         },
-                        "temphi": 63,
-                        "templo": 47,
-                        "humidity": 0.66,
-                        "wind": 7,
-                        "rainchance": 0.4
+                        "temphi": 67,
+                        "templo": 48,
+                        "humidity": 0.67,
+                        "wind": 9,
+                        "rainchance": 0.5
                     },
                     {
                         "time": {
@@ -73,11 +61,11 @@
                             "day": 3,
                             "month": 5
                         },
-                        "temphi": 66,
-                        "templo": 50,
-                        "humidity": 0.49,
+                        "temphi": 67,
+                        "templo": 49,
+                        "humidity": 0.46,
                         "wind": 5,
-                        "rainchance": 0.2
+                        "rainchance": 0.1
                     },
                     {
                         "time": {
@@ -85,11 +73,11 @@
                             "day": 4,
                             "month": 5
                         },
-                        "temphi": 71,
-                        "templo": 52,
-                        "humidity": 0.5,
-                        "wind": 11,
-                        "rainchance": 0.5
+                        "temphi": 68,
+                        "templo": 50,
+                        "humidity": 0.51,
+                        "wind": 7,
+                        "rainchance": 0.2
                     },
                     {
                         "time": {
@@ -98,10 +86,10 @@
                             "month": 5
                         },
                         "temphi": 68,
-                        "templo": 52,
-                        "humidity": 0.56,
-                        "wind": 9,
-                        "rainchance": 0.6
+                        "templo": 50,
+                        "humidity": 0.54,
+                        "wind": 10,
+                        "rainchance": 0.2
                     },
                     {
                         "time": {
@@ -109,23 +97,11 @@
                             "day": 6,
                             "month": 5
                         },
-                        "temphi": 71,
-                        "templo": 50,
-                        "humidity": 0.48,
-                        "wind": 9,
-                        "rainchance": 0.2
-                    },
-                    {
-                        "time": {
-                            "weekday": 6,
-                            "day": 7,
-                            "month": 5
-                        },
-                        "temphi": 72,
-                        "templo": 50,
-                        "humidity": 0.41,
-                        "wind": 9,
-                        "rainchance": 0.1
+                        "temphi": 65,
+                        "templo": 51,
+                        "humidity": 0.54,
+                        "wind": 11,
+                        "rainchance": 0.6
                     }
                 ]
             }
@@ -139,9 +115,9 @@
                         "day": 29,
                         "month": 4
                     },
-                    "temperature": 43.87,
-                    "humidity": 0.92,
-                    "wind": 2.39,
+                    "temperature": 47.88,
+                    "humidity": 0.79,
+                    "wind": 2.95,
                     "rainchance": 0
                 },
                 "week": [
@@ -151,11 +127,11 @@
                             "day": 30,
                             "month": 4
                         },
-                        "temphi": 63.82,
+                        "temphi": 65.04,
                         "templo": 46.13,
-                        "humidity": 0.71,
-                        "wind": 5.45,
-                        "rainchance": 0.22
+                        "humidity": 0.67,
+                        "wind": 4.93,
+                        "rainchance": 0.03
                     },
                     {
                         "time": {
@@ -163,11 +139,11 @@
                             "day": 1,
                             "month": 5
                         },
-                        "temphi": 56.58,
-                        "templo": 49.09,
-                        "humidity": 0.87,
-                        "wind": 8.55,
-                        "rainchance": 0.74
+                        "temphi": 56.61,
+                        "templo": 49.94,
+                        "humidity": 0.88,
+                        "wind": 7.43,
+                        "rainchance": 0.76
                     },
                     {
                         "time": {
@@ -175,11 +151,11 @@
                             "day": 2,
                             "month": 5
                         },
-                        "temphi": 62.87,
-                        "templo": 48.42,
-                        "humidity": 0.9,
-                        "wind": 5.5,
-                        "rainchance": 0.65
+                        "temphi": 69.35,
+                        "templo": 51.36,
+                        "humidity": 0.83,
+                        "wind": 3.75,
+                        "rainchance": 0.74
                     },
                     {
                         "time": {
@@ -187,11 +163,11 @@
                             "day": 3,
                             "month": 5
                         },
-                        "temphi": 66.78,
-                        "templo": 45.31,
-                        "humidity": 0.68,
-                        "wind": 6.38,
-                        "rainchance": 0.03
+                        "temphi": 68.65,
+                        "templo": 49.83,
+                        "humidity": 0.71,
+                        "wind": 3.31,
+                        "rainchance": 0.05
                     },
                     {
                         "time": {
@@ -199,11 +175,11 @@
                             "day": 4,
                             "month": 5
                         },
-                        "temphi": 69.17,
-                        "templo": 49.01,
-                        "humidity": 0.66,
-                        "wind": 9.29,
-                        "rainchance": 0.06
+                        "temphi": 65.67,
+                        "templo": 51.39,
+                        "humidity": 0.79,
+                        "wind": 3.28,
+                        "rainchance": 0.61
                     },
                     {
                         "time": {
@@ -211,11 +187,11 @@
                             "day": 5,
                             "month": 5
                         },
-                        "temphi": 72.21,
-                        "templo": 55.57,
-                        "humidity": 0.75,
-                        "wind": 4.27,
-                        "rainchance": 0.09
+                        "temphi": 68.02,
+                        "templo": 54.76,
+                        "humidity": 0.72,
+                        "wind": 4.66,
+                        "rainchance": 0.06
                     },
                     {
                         "time": {
@@ -223,11 +199,11 @@
                             "day": 6,
                             "month": 5
                         },
-                        "temphi": 71.74,
-                        "templo": 54.1,
-                        "humidity": 0.72,
-                        "wind": 4.58,
-                        "rainchance": 0.16
+                        "temphi": 66.06,
+                        "templo": 55.22,
+                        "humidity": 0.66,
+                        "wind": 7.37,
+                        "rainchance": 0.48
                     }
                 ]
             }

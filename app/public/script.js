@@ -1,6 +1,6 @@
 
 
-function push(){
+var push = function(){
     console.log("submitting")
     var location = $(".location").val();
     $.get(
@@ -12,9 +12,9 @@ function push(){
             $(".today").empty();
             $(".locale").empty();
             $(".title").empty();
-            $(".locale").append(data.location.address);
+
             
-            weatherReport(data);
+            weatherReport(data, appendToday, appendWeek);
         }
     );
     
@@ -22,11 +22,17 @@ function push(){
     $(".location").val(""); 
 }
 
-function weatherReport(data){
+var weatherReport = function(data, appendToday, appendWeek){
+    
+    if(data.error){
+        console.error(data.error);
+        return
+    }
     
     var today = 
     {
-        time:0,
+        location:null,
+        time:null,
         temperature:0,
         wind:0,
         humidity:0.0,
@@ -46,6 +52,9 @@ function weatherReport(data){
             rainchance:0
         });
     }
+    
+    today.location = data.location.address;
+    
     //leaving time out as everything else is possible to get an average for
     var attribcur = ["temperature", "wind", "humidity", "rainchance"];
     var curSums = [0,0,0,0];//for getting averages
@@ -109,7 +118,8 @@ function weatherReport(data){
 <p class = "rainchance"></p>
 */
 
-function appendToday(today){
+var  appendToday = function(today){
+    $(".locale").append(today.location);
     $(".today").append("<h3> current weather </h3>");
     //$(".today").append("<b>date " + today.time.month + "/" + today.time.day + "</b>");
     $(".today").append("<p>temp " + Math.round10(today.temperature, -2) + "</p>");
@@ -129,7 +139,7 @@ function appendToday(today){
 </div>
 */
 
-function appendWeek(week){
+var appendWeek = function(week){
     $(".title").append("<h3> seven day forecast </h3>");
     for(var i = 0; i < week.length; i ++){
         var day = $("<div'></div>").addClass("day");
@@ -150,7 +160,11 @@ function appendWeek(week){
     
 }
 
+exports.weatherReport = weatherReport;
+
+/*
 $(document).ready(function(){
 
 })
+*/
    

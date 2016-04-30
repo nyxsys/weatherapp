@@ -40,7 +40,7 @@ var getLocation = function (location, callback){
         
         if(data.status != "OK"){
             
-            callback({error:"Call failed, location likely nonexistent"});
+            callback({error:"location: " + location + " unavailable"});
             return console.error("Call failed, location " + location + " likely nonexistent", err);
         }
         
@@ -147,7 +147,7 @@ var getFCWeek = function (data){
         
         var week = []
         
-        for(var i = 1; i < weekData.length; i++){ //starts at 1 as 0 is today
+        for(var i = 1; i < 8; i++){ //starts at 1 as 0 is today
             week.push(
                 {
                   time : getTime(weekData[i].time),
@@ -191,7 +191,7 @@ var getWUWeek = function (data){
     
     var week = []
     
-    for(var i = 1; i < weekData.length; i++){ //starts at 1 as 0 is today
+    for(var i = 1; i < 8; i++){ //starts at 1 as 0 is today
         week.push(
             {
               time : getTime(weekData[i].date.epoch),
