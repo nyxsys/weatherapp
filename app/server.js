@@ -18,7 +18,7 @@ console.log("Started server");
 var aRouter = express();
 var myServer = http.createServer(aRouter);
 
-aRouter.use(express.static('public'));
+aRouter.use(express.static(__dirname+'/public'));
 
 aRouter.get('/location/:location', function(req,res){
     getLocation(req.params.location, function(result){
