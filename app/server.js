@@ -23,7 +23,7 @@ aRouter.use(express.static(__dirname+'/public'));
 aRouter.get('/location/:location', function(req,res){
     getLocation(req.params.location, function(result){
         //console.log("result:", result);
-       //res.set('Content-Type', 'application/json');
+        res.set('Content-Type', 'application/json');
         res.send(result);
     });
 
