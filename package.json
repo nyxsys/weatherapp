@@ -4,8 +4,9 @@
   "description": "Chatham Finanical weather app",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine-node spec"
-  },
+    "test": "./node_modules/.bin/jasmine-node spec",
+    "start":"./app/config.sh"
+   },
   "author": "Mark Barbera",
   "dependencies": {
     "express": "^4.13.4",
